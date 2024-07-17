@@ -1,28 +1,35 @@
-// src/contexts/AuthContext.jsx
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useEffect, useState } from "react";
+import SpinningLoader from "../components/common/Loader"; // Adjust the path as necessary
 
-export const AuthContext = createContext();
+const AuthContext = createContext();
+
+export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }) => {
-  const [authState, setAuthState] = useState({
-    user: null,
-    token: null,
-  });
+	const [user, setUser] = useState(null);
+	const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const savedAuthState = JSON.parse(localStorage.getItem('authState'));
-    if (savedAuthState) {
-      setAuthState(savedAuthState);
-    }
-  }, []);
+	useEffect(() => {
+		const storedUser = localStorage.getItem("user");
+		if (storedUser) {
+			setUser(JSON.parse(storedUser));
+		}
+		setLoading(false);
+	}, []);
 
-  useEffect(() => {
-    localStorage.setItem('authState', JSON.stringify(authState));
-  }, [authState]);
+	const login = (userData) => {
+		setUser(userData);
+		localStorage.setItem("user", JSON.stringify(userData));
+	};
 
-  return (
-    <AuthContext.Provider value={{ authState, setAuthState }}>
-      {children}
-    </AuthContext.Provider>
-  );
+	const logout = () => {
+		setUser(null);
+		localStorage.removeItem("user");
+	};
+
+	return (
+		<AuthContext.Provider value={{ user, login, logout }}>
+			{loading ? <SpinningLoader /> : children}
+		</AuthContext.Provider>
+	);
 };

@@ -7,7 +7,7 @@ module.exports = {
 		extend: {
 			colors: {
 				primary: {
-					DEFAULT: "#ffd700", // Gold
+					DEFAULT: "#c0a700", // Gold
 					dark: "#c0a700", // Darker gold
 				},
 				secondary: {
@@ -17,6 +17,10 @@ module.exports = {
 				background: {
 					DEFAULT: "#f3f4f6", // Gray 100
 					dark: "#1f2937", // Gray 800
+				},
+				contrast: {
+					DEFAULT: "#1f2937", // Gray 800
+					dark: "#f3f4f6", // Gray 100
 				},
 				text: {
 					DEFAULT: "#1f2937", // Gray 800
