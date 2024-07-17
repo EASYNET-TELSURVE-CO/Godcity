@@ -2,6 +2,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import RouteConfig from "./routes"; // Renamed to avoid naming conflicts
+import CustomLayout from "../components/customlayout/CustomLayout";
 
 const AppRoutes = () => {
 	return (
@@ -10,7 +11,11 @@ const AppRoutes = () => {
 				<Route
 					key={route.path}
 					path={route.path}
-					element={<route.element {...route.props} />} // Use JSX element instead of string
+					element={
+						<CustomLayout>
+							<route.element {...route.props} />
+						</CustomLayout>
+					} // Use JSX element instead of string
 				/>
 			))}
 		</Routes>

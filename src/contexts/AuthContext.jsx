@@ -5,6 +5,14 @@ const AuthContext = createContext();
 
 export const useAuth = () => useContext(AuthContext);
 
+const defaultUser = {
+	id: null,
+	name: "",
+	email: "",
+	role: "", // e.g., 'user' or 'admin'
+	// Add other default fields as necessary
+};
+
 export const AuthProvider = ({ children }) => {
 	const [user, setUser] = useState(null);
 	const [loading, setLoading] = useState(true);
