@@ -62,9 +62,9 @@ const FeatureCard = ({ icon: Icon, title, description }) => {
 	return (
 		<div className="bg-white p-8 rounded-2xl shadow-lg text-center">
 			<IconButton className="text-primary text-4xl mb-4 mx-auto">
-				<Icon fontSize="large" />
+				<Icon fontSize="large" color='primary'/>
 			</IconButton>
-			<h3 className="text-xl text-contrast-dark dark:text-contrast font-semibold mb-2">
+			<h3 className="text-xl text-contrast dark:text-contrast font-semibold mb-2">
 				{title}
 			</h3>
 			<p className="text-gray-600">{description}</p>
