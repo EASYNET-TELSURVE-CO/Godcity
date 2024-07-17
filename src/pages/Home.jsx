@@ -12,7 +12,7 @@ const Home = () => {
 			<header className="bg-background-dark text-white p-4 flex justify-between items-center">
 				<div className="flex items-center space-x-2">
 					<img src="/GC.png" alt="GodCity Logo" className="w-8 h-8" />
-					<span className="text-xl font-bold">GodCity</span>
+					<span className="text-xl font-bold">GodCi†y</span>
 				</div>
 				<nav className="space-x-4">
 					<a href="#" className="hover:underline">
@@ -71,7 +71,7 @@ const Home = () => {
 
 const FeatureCard = ({ icon: Icon, title, description }) => {
 	return (
-		<div className="bg-white p-6 rounded-lg shadow-lg text-center">
+		<div className="bg-white p-8 rounded-2xl shadow-lg text-center">
 			<IconButton className="text-primary text-4xl mb-4 mx-auto">
 				<Icon fontSize="large" />
 			</IconButton>
