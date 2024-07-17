@@ -18,12 +18,12 @@ export default defineConfig({
 				background_color: "#f3f4f6", // Light background color from Tailwind config
 				icons: [
 					{
-						src: "/GC.png", // Path to your logo image
+						src: "GC.png", // Path to your logo image
 						sizes: "192x192",
 						type: "image/png",
 					},
 					{
-						src: "/GC.png", // Path to your logo image
+						src: "GC.png", // Path to your logo image
 						sizes: "512x512",
 						type: "image/png",
 					},
