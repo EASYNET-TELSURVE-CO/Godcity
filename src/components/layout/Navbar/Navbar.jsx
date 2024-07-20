@@ -109,7 +109,7 @@ const Navbar = () => {
 
 	return (
 		<nav
-			className="bg-background shadow-md dark:bg-background-dark sticky top-0 z-50 border-b-[1px] border-slate-300 dark:border-background/15"
+			className="bg-background dark:bg-background-dark sticky top-0 z-50"
 			style={{ opacity: navbarOpacity }}
 		>
 			<div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">

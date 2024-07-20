@@ -28,6 +28,11 @@ module.exports = {
 				},
 				// Add other colors as needed
 			},
+			backgroundImage: theme => ({
+				'hero': "url('/hero.jpg')",
+				'hero_dark': "url('/hero_dark.jpg')",
+				// Add other background images as needed
+			  }),
 		},
 	},
 	plugins: [],
