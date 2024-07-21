@@ -9,6 +9,7 @@ import Features from "../components/home/Features";
 import Cta from "../components/home/Cta";
 import Sermon from "../components/home/Sermon";
 import Banner from "../components/home/Banner";
+import AboutUs from "../components/home/AboutUs";
 
 const Home = () => {
     const { user } = useAuth();
@@ -64,8 +65,9 @@ const Home = () => {
 
             <Features />
             <Cta />
-            <Sermon/>
-            <Banner/>
+            <Sermon />
+            <Banner />
+            <AboutUs />
         </div>
     );
 };
