@@ -7,6 +7,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import Features from "../components/home/Features";
 import Cta from "../components/home/Cta";
+import Sermon from "../components/home/Sermon";
 
 const Home = () => {
     const { user } = useAuth();
@@ -62,6 +63,7 @@ const Home = () => {
 
             <Features />
             <Cta />
+            <Sermon/>
         </div>
     );
 };
