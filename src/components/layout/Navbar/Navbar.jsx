@@ -14,7 +14,7 @@ const Menu = ({ to, label }) => {
 				to={to}
 				className={`block py-2 md:py-0 px-3 my-1 md:my-0 md:p-0 ${
 					location.pathname === to
-						? "bg-primary text-contrast-dark font-medium rounded-2xl md:bg-transparent md:text-secondary"
+						? "bg-primary text-contrast-dark font-medium rounded-2xl md:bg-transparent md:text-primary"
 						: "rounded-2xl font-normal hover:text-secondary hover:bg-primary/75 md:hover:bg-transparent dark:md:hover:text-secondary dark:hover:text-contrast-dark md:dark:hover:bg-transparent dark:border-slate-700"
 				}`}
 				aria-current={location.pathname === to ? "page" : undefined}

@@ -40,36 +40,35 @@ const Home = () => {
                     </button>
                 </div>
             </section>
-
-            <section className="bg-background dark:bg-background-dark py-20">
-                <div className="container mx-auto px-4">
-                    <h2 className="text-3xl font-bold text-center mb-10">
-                        Features
-                    </h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                        <FeatureCard
-                            icon={PersonIcon}
-                            title="Member Management"
-                            description="Efficiently manage your church members."
-                        />
-                        <FeatureCard
-                            icon={EventIcon}
-                            title="Event Management"
-                            description="Organize and manage church events seamlessly."
-                        />
-                        <FeatureCard
-                            icon={AttachMoneyIcon}
-                            title="Financial Management"
-                            description="Keep track of donations and finances."
-                        />
-                        <FeatureCard
-                            icon={EmailIcon}
-                            title="Communication"
-                            description="Send notifications and newsletters."
-                        />
-                    </div>
-                </div>
-            </section>
+<section className="bg-background dark:bg-background-dark py-20">
+    <div className="container mx-auto px-4">
+        <h2 className="text-3xl font-bold text-center mb-10">
+            Features
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <FeatureCard
+                icon={PersonIcon}
+                title="Member Management"
+                description="Efficiently manage your church members with detailed profiles and group classifications."
+            />
+            <FeatureCard
+                icon={EventIcon}
+                title="Event Management"
+                description="Organize and manage church events seamlessly, including event scheduling, registration management, and attendance tracking."
+            />
+            <FeatureCard
+                icon={AttachMoneyIcon}
+                title="Financial Management"
+                description="Keep track of donations and finances with detailed financial records, reporting capabilities, and online payment integrations."
+            />
+            <FeatureCard
+                icon={EmailIcon}
+                title="Communication"
+                description="Communicate effectively with members through email and SMS notifications, newsletters, and discussion forums."
+            />
+        </div>
+    </div>
+</section>
         </div>
     );
 };
