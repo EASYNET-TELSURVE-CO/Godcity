@@ -7,11 +7,18 @@ import LibraryBooksIcon from "@mui/icons-material/LibraryBooks";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import PlaylistAddCheckIcon from "@mui/icons-material/PlaylistAddCheck";
 import ShareIcon from "@mui/icons-material/Share";
+import { useNavigate } from "react-router";
 
 const Banner = () => {
     React.useEffect(() => {
         AOS.init({ duration: 1000 });
     }, []);
+
+    const navigate = useNavigate();
+
+    const handleGetStarted = () => {
+        navigate('/login');
+    };
 
     return (
         <section
@@ -61,6 +68,14 @@ const Banner = () => {
                         description="Share sermons with your community."
                     />
                 </div>
+                <button
+                    onClick={handleGetStarted}
+                    className="bg-primary text-white text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl px-4 xs:px-6 sm:px-8 md:px-10 lg:px-12 xl:px-14 2xl:px-16 py-3 sm:py-4 md:py-5 lg:py-6 xl:py-7 2xl:py-8 rounded-2xl hover:bg-primary-dark transition animate-pulse"
+                    data-aos="fade-up"
+                    data-aos-delay="300"
+                >
+                    Get Started with Sermon Management
+                </button>
             </div>
         </section>
     );
