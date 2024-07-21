@@ -67,7 +67,7 @@ const UserSection = ({
 				<Link to="/login">
 					<button
 						type="button"
-						className="text-secondary dark:text-contrast-dark bg-none hover:bg-primary/85 focus:ring-4 focus:outline-none focus:ring-secondary font-medium rounded-xl shadow-md text-sm px-4 py-2.5 text-center dark:hover:bg-primary-dark/85 dark:focus:ring-primary hover:text-contrast-dark"
+						className="text-contrast dark:text-contrast-dark bg-none hover:bg-primary/85 focus:ring-4 focus:outline-none focus:ring-secondary font-medium rounded-xl shadow-md text-sm px-4 py-2.5 text-center dark:hover:bg-primary-dark/85 dark:focus:ring-primary hover:text-contrast-dark"
 					>
 						JOIN NOW
 					</button>
