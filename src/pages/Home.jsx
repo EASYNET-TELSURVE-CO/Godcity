@@ -76,7 +76,9 @@ const FeatureCard = ({ icon: Icon, title, description }) => {
 	return (
 		<div className="bg-none p-8 rounded-2xl shadow-lg text-center flex flex-col justify-between">
 			<IconButton className="text-4xl mb-4 mx-auto">
-				<Icon fontSize="large" color="primary" />
+				<Icon fontSize="large"
+				style={{ color: '#c0a700' }}
+				/>
 			</IconButton>
 			<h3 className="text-xl text-contrast dark:text-contrast-dark font-semibold mb-2">
 				{title}
