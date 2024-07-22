@@ -26,6 +26,13 @@ const testimonials = [
         position: "Member",
         testimonial: "The ability to access sermons anytime and anywhere has been a game-changer for me. This platform truly makes a difference.",
         image: "https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+    },
+    {
+        id: 4,
+        name: "Emily Davis",
+        position: "Youth Leader",
+        testimonial: "The youth programs are fantastic! They engage the younger members and provide them with meaningful ways to connect with their faith.",
+        image: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
     }
 ];
 
