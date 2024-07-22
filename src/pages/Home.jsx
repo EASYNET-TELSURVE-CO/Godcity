@@ -10,6 +10,7 @@ import Cta from "../components/home/Cta";
 import Sermon from "../components/home/Sermon";
 import Banner from "../components/home/Banner";
 import AboutUs from "../components/home/AboutUs";
+import Testimonials from "../components/home/Testimonials";
 
 const Home = () => {
     const { user } = useAuth();
@@ -68,6 +69,7 @@ const Home = () => {
             <Sermon />
             <Banner />
             <AboutUs />
+            <Testimonials />
         </div>
     );
 };
