@@ -12,6 +12,7 @@ import Banner from "../components/home/Banner";
 import AboutUs from "../components/home/AboutUs";
 import Testimonials from "../components/home/Testimonials";
 import Events from "../components/home/Events";
+import Contact from "../components/home/Contact";
 
 const Home = () => {
     const { user } = useAuth();
@@ -71,8 +72,9 @@ const Home = () => {
             <Banner />
             <AboutUs />
             <Testimonials />
-            <Events/>
+            <Events />
             <Cta />
+            <Contact />
         </div>
     );
 };
