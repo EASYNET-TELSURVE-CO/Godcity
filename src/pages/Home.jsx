@@ -11,6 +11,7 @@ import Sermon from "../components/home/Sermon";
 import Banner from "../components/home/Banner";
 import AboutUs from "../components/home/AboutUs";
 import Testimonials from "../components/home/Testimonials";
+import Events from "../components/home/Events";
 
 const Home = () => {
     const { user } = useAuth();
@@ -70,6 +71,8 @@ const Home = () => {
             <Banner />
             <AboutUs />
             <Testimonials />
+            <Events/>
+            <Cta />
         </div>
     );
 };
