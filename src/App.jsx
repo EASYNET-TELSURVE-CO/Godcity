@@ -20,7 +20,7 @@ const App = () => {
 				theme="light"
 			/>
 			<Toaster />
-			<div className="bg-background dark:bg-background-dark min-h-screen flex flex-col text-contrast dark:text-contrast-dark">
+			<div className="bg-background dark:bg-background-dark min-h-screen flex flex-col text-contrast dark:text-contrast-dark overflow-hidden">
 				<div className="flex-1 justify-center items-center font-bold text-center">
 					<AppRouter />
 				</div>
