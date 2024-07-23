@@ -7,7 +7,7 @@ import EventIcon from "@mui/icons-material/Event";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AddIcon from "@mui/icons-material/Add";
-import gcLogo from "../../../public/GC.png"; // Adjust the path as necessary
+import gcLogo from "/GC.png"; // Adjust the path as necessary
 import events from "./events";
 
 const Events = () => {
@@ -16,7 +16,7 @@ const Events = () => {
     }, []);
 
     return (
-        <section className="relative py-20 bg-background-light dark:bg-background-dark text-black dark:text-white">
+        <section className="relative py-20 bg-background-light dark:bg-background-dark text-black dark:text-white max-w-screen">
             <img src={gcLogo} alt="GodCity Logo" className="absolute inset-0 w-full h-full object-cover opacity-5" />
             <div className="container mx-auto px-4">
                 <div className="text-center mb-12" data-aos="fade-up">
