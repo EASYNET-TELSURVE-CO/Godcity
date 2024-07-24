@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { IconButton } from "@mui/material";
 import ChatIcon from "@mui/icons-material/Chat";
 import CloseIcon from "@mui/icons-material/Close";
+import SmartToyIcon from "@mui/icons-material/SmartToy";
 import "aos/dist/aos.css";
 
 const Chatbot = ({ sectionRefs }) => {
@@ -177,7 +178,7 @@ const Chatbot = ({ sectionRefs }) => {
 						isOpen ? "block" : "hidden"
 					}`}
 				>
-					Where do you want to navigate to ?
+					<SmartToyIcon className="text-primary" />
 				</h2>
 				<IconButton onClick={toggleChatbot} size="large">
 					{isOpen ? (
