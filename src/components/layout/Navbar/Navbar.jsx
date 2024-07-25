@@ -5,19 +5,17 @@ import { menuItems, userDropdownItems } from "./navbarData";
 import UserSection from "./UserSection";
 import { useAuth } from "../../../contexts/AuthContext";
 
-const Menu = ({ to, label }) => {
-	const location = useLocation();
-
+const Menu = ({ label, onClick, isActive }) => {
 	return (
 		<li>
 			<Link
-				to={to}
+				onClick={onClick}
 				className={`block py-2 md:py-0 px-3 my-1 md:my-0 md:p-0 ${
-					location.pathname === to
+					isActive
 						? "bg-primary text-contrast-dark font-medium rounded-2xl md:bg-transparent md:text-primary"
-						: "rounded-2xl font-normal hover:text-secondary hover:bg-primary/75 md:hover:bg-transparent dark:md:hover:text-secondary dark:hover:text-contrast-dark md:dark:hover:bg-transparent dark:border-slate-700"
+						: "rounded-2xl font-normal hover:text-white md:hover:text-primary hover:bg-primary/75 md:hover:bg-transparent dark:md:hover:text-primary dark:hover:text-contrast-dark md:dark:hover:bg-transparent dark:border-slate-700"
 				}`}
-				aria-current={location.pathname === to ? "page" : undefined}
+				aria-current={isActive ? "page" : undefined}
 			>
 				{label}
 			</Link>
@@ -45,11 +43,12 @@ const MenuButton = ({ isMenuOpen, toggleMenu }) => {
 	);
 };
 
-const Navbar = () => {
+const Navbar = ({ sectionRefs, currentSection }) => {
 	const [isMenuOpen, setMenuOpen] = useState(false);
 	const [isLoggedIn, setLoggedIn] = useState(false);
 	const [isUserOpen, setUserOpen] = useState(false);
 	const [navbarOpacity, setNavbarOpacity] = useState(1);
+	const [activeSection, setActiveSection] = useState(currentSection);
 
 	const menuRef = useRef(null);
 	const userDropdownRef = useRef(null);
@@ -98,6 +97,15 @@ const Navbar = () => {
 		setNavbarOpacity(opacity);
 	};
 
+	const handleScrollToSection = (section) => {
+		if (sectionRefs.current[section] && sectionRefs.current[section].current) {
+			sectionRefs.current[section].current.scrollIntoView({
+				behavior: "smooth",
+			});
+			setActiveSection(section);
+		}
+	};
+
 	useEffect(() => {
 		document.addEventListener("click", handleClickOutside);
 		window.addEventListener("scroll", handleScroll);
@@ -105,7 +113,7 @@ const Navbar = () => {
 			document.removeEventListener("click", handleClickOutside);
 			window.removeEventListener("scroll", handleScroll);
 		};
-	}, [handleClickOutside]);
+	}, [handleClickOutside, handleScroll]);
 
 	return (
 		<nav
@@ -144,7 +152,12 @@ const Navbar = () => {
 				>
 					<ul className="flex flex-col font-medium p-6 md:p-0 my-4 md:my-0 bg-background dark:bg-background-dark rounded-3xl md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-warm dark:bg-background-dark/85md:dark:bg-background-dark/85 shadow md:shadow-none">
 						{menuItems.map((item) => (
-							<Menu key={item.to} to={item.to} label={item.label} />
+							<Menu
+								key={item.section}
+								label={item.label}
+								onClick={() => handleScrollToSection(item.section)}
+								isActive={activeSection  === item.section}
+							/>
 						))}
 					</ul>
 				</div>

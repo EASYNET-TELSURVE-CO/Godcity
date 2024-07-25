@@ -16,21 +16,9 @@ import Contact from "../components/home/Contact";
 import PaymentSection from "../components/home/PaymentSection"; // Import the PaymentSection component
 import Chatbot from "../components/home/Chatbot"; // Import the Chatbot component
 
-const Home = () => {
+const Home = ({ sectionRefs, setCurrentSection }) => {
 	const { user } = useAuth();
 	const navigate = useNavigate();
-	const sectionRefs = {
-		features: useRef(null),
-		cta: useRef(null),
-		sermon: useRef(null),
-		banner: useRef(null),
-		hero: useRef(null),
-		aboutUs: useRef(null),
-		testimonials: useRef(null),
-		events: useRef(null),
-		payment: useRef(null),
-		contact: useRef(null),
-	};
 
 	useEffect(() => {
 		if (user) {
@@ -42,13 +30,49 @@ const Home = () => {
 		AOS.init({ duration: 1000 });
 	}, []);
 
+	useEffect(() => {
+		const observerOptions = {
+			root: null,
+			rootMargin: "0px",
+			threshold: 0.6,
+		};
+
+		const observerCallback = (entries) => {
+			entries.forEach((entry) => {
+				if (entry.isIntersecting) {
+					const sectionId = entry.target.id;
+					setCurrentSection(sectionId);
+				}
+			});
+		};
+
+		const observer = new IntersectionObserver(
+			observerCallback,
+			observerOptions
+		);
+
+		Object.values(sectionRefs.current).forEach((ref) => {
+			if (ref.current) {
+				observer.observe(ref.current);
+			}
+		});
+
+		return () => {
+			Object.values(sectionRefs.current).forEach((ref) => {
+				if (ref.current) {
+					observer.unobserve(ref.current);
+				}
+			});
+		};
+	}, [sectionRefs, setCurrentSection]);
+
 	return (
 		<div className="scrollbar-hidden">
 			<section
 				className="flex flex-col bg-hero dark:bg-hero_dark bg-cover min-h-screen dark:text-contrast text-center scrollbar-hidden
                 space-y-4 xs:space-y-6 sm:space-y-8 md:space-y-10 lg:space-y-12 xl:space-y-14 2xl:space-y-16 justify-center items-center py-20"
-				ref={sectionRefs.hero}
-               
+				id="hero"
+				ref={sectionRefs.current.hero}
 			>
 				<div className="bg-white/25 dark:bg-black/25 m-4 p-8 rounded-3xl bg-opacity-25 text-[#000] dark:text-white">
 					<h1
@@ -81,35 +105,33 @@ const Home = () => {
 					</button>
 				</div>
 			</section>
-
-			<section ref={sectionRefs.features}>
+			<section id="features" ref={sectionRefs.current.features}>
 				<Features />
 			</section>
-			<section ref={sectionRefs.cta}>
+			<section id="cta" ref={sectionRefs.current.cta}>
 				<Cta />
 			</section>
-			<section ref={sectionRefs.sermon}>
+			<section id="sermon" ref={sectionRefs.current.sermon}>
 				<Sermon />
 			</section>
-			<section ref={sectionRefs.banner}>
+			<section id="banner" ref={sectionRefs.current.banner}>
 				<Banner />
 			</section>
-			<section ref={sectionRefs.aboutUs}>
+			<section id="aboutUs" ref={sectionRefs.current.aboutUs}>
 				<AboutUs />
 			</section>
-			<section ref={sectionRefs.testimonials}>
+			<section id="testimonials" ref={sectionRefs.current.testimonials}>
 				<Testimonials />
 			</section>
-			<section ref={sectionRefs.events}>
+			<section id="events" ref={sectionRefs.current.events}>
 				<Events />
 			</section>
-			<section ref={sectionRefs.payment}>
+			<section id="payment" ref={sectionRefs.current.payment}>
 				<PaymentSection />
 			</section>
-			<section ref={sectionRefs.contact}>
+			<section id="contact" ref={sectionRefs.current.contact}>
 				<Contact />
 			</section>
-
 			{/* Add the Chatbot component */}
 			<Chatbot sectionRefs={sectionRefs} />
 		</div>

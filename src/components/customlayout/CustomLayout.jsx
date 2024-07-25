@@ -1,5 +1,5 @@
 // src/components/layout/CustomLayout.jsx
-import React from "react";
+import React, { useRef, useState } from "react";
 import { useAuth } from "../../contexts/AuthContext";
 import Navbar from "../layout/Navbar/Navbar";
 import Footer from "../layout/Footer";
@@ -9,6 +9,26 @@ import CustomFooter from "./CustomFooter";
 
 const CustomLayout = ({ children }) => {
 	const { user } = useAuth();
+	const [currentSection, setCurrentSection] = useState("hero");
+	const sectionRefs = useRef({
+		hero: React.createRef(),
+		features: React.createRef(),
+		cta: React.createRef(),
+		sermon: React.createRef(),
+		banner: React.createRef(),
+		aboutUs: React.createRef(),
+		testimonials: React.createRef(),
+		events: React.createRef(),
+		payment: React.createRef(),
+		contact: React.createRef(),
+	});
+
+	const childrenWithProps = React.Children.map(children, (child) => {
+		if (React.isValidElement(child)) {
+			return React.cloneElement(child, { sectionRefs, setCurrentSection });
+		}
+		return child;
+	});
 
 	if (user) {
 		// Layout for authenticated users
@@ -16,7 +36,7 @@ const CustomLayout = ({ children }) => {
 			<div className="authenticated-layout">
 				<CustomNavbar />
 				<CustomSidebar />
-				<main>{children}</main>
+				<main>{childrenWithProps}</main>
 				<CustomFooter />
 			</div>
 		);
@@ -25,8 +45,8 @@ const CustomLayout = ({ children }) => {
 	// Layout for unauthenticated users
 	return (
 		<div className="unauthenticated-layout">
-			<Navbar />
-			<main>{children}</main>
+			<Navbar sectionRefs={sectionRefs} currentSection={currentSection} />
+			<main>{childrenWithProps}</main>
 			<Footer />
 		</div>
 	);

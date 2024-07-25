@@ -1,11 +1,10 @@
 // src/components/Navbar/navbarData.js
 const menuItems = [
-	{ to: "/", label: "Home" },
-	{ to: "/features", label: "Features" },
-	{ to: "/pricing", label: "Pricing" },
-	{ to: "/testimonials", label: "Testimonials" },
-	{ to: "/faq", label: "FAQ" },
-	{ to: "/contact", label: "Contact" },
+	{ label: "Home", section: "hero" },
+	{ label: "Features", section: "features" },
+	{ label: "Make Payment", section: "payment" },
+	{ label: "Testimonials", section: "testimonials" },
+	{ label: "Contact", section: "contact" },
 ];
 const userDropdownItems = [
 	{ to: "/profile", label: "Profile" },
