@@ -6,6 +6,7 @@ import Footer from "../layout/Footer";
 import CustomNavbar from "./CustomNavbar";
 import CustomSidebar from "./CustomSidebar";
 import CustomFooter from "./CustomFooter";
+import ScrollToTop from "../layout/ScrollToTop";
 
 const CustomLayout = ({ children }) => {
 	const { user } = useAuth();
@@ -38,6 +39,7 @@ const CustomLayout = ({ children }) => {
 				<CustomSidebar />
 				<main>{childrenWithProps}</main>
 				<CustomFooter />
+				<ScrollToTop />
 			</div>
 		);
 	}
@@ -48,6 +50,7 @@ const CustomLayout = ({ children }) => {
 			<Navbar sectionRefs={sectionRefs} currentSection={currentSection} />
 			<main>{childrenWithProps}</main>
 			<Footer />
+			<ScrollToTop />
 		</div>
 	);
 };
