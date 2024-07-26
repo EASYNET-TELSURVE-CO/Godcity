@@ -27,7 +27,7 @@ const Events = () => {
                         Stay updated with our latest events and activities.
                     </p>
                     <button
-                        className="mt-4 px-6 py-3 bg-primary text-white rounded-full shadow-lg hover:bg-primary-dark transition transform hover:scale-105"
+                        className="mt-4 px-6 py-4 bg-primary text-white rounded-full shadow-lg hover:bg-primary-dark transition transform hover:scale-105"
                         data-aos="fade-up"
                         data-aos-delay="100"
                     >

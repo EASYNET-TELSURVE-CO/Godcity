@@ -29,7 +29,7 @@ const ChatInterface = ({ chatHistory, handleUserInput, toggleChatbot, isOpen }) 
 
   useEffect(() => {
     if (isOpen && dummyDivRef.current && !isUserScrolling) {
-      dummyDivRef.current.scrollIntoView({ behavior: "smooth" });
+      //dummyDivRef.current.scrollIntoView({ behavior: "smooth" });
     }
   }, [chatHistory, isOpen, isUserScrolling]);
 
@@ -38,7 +38,7 @@ const ChatInterface = ({ chatHistory, handleUserInput, toggleChatbot, isOpen }) 
       className={`fixed bottom-[30%] right-4 shadow-2xl rounded-3xl p-8 transition-all text-gray-700 dark:text-gray-300
         ${
           isOpen
-            ? "w-full w-96 sm:w-3/4 md:w-1/2 lg:w-1/3 xl:w-1/4 bg-white dark:bg-gray-800"
+            ? "w-full w-[360px] sm:w-3/4 md:w-1/2 lg:w-1/3 xl:w-1/4 bg-white dark:bg-gray-800"
             : "w-16 h-16 bg-primary flex items-center justify-center"
         }  z-[9999]`}
       style={{
