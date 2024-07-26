@@ -6,21 +6,22 @@ import {
 	Select,
 	MenuItem,
 	InputLabel,
-	FormControl,
 } from "@mui/material";
 import paymentOptions from "./paymentOptions.json";
 
-const PaymentModal = ({ type, onClose, onProceed }) => {
+const PaymentModal = ({ type = "default", onClose, onProceed }) => {
 	const [selectedItem, setSelectedItem] = useState("Family A Plan");
 	const [amount, setAmount] = useState("");
-	const [phase, setPhase] = useState(1);
+
+	// Validate paymentOptions[type]
+	const currentOptions = paymentOptions[type] || {};
 
 	const handleItemChange = (event) => {
 		const selectedOption = event.target.value;
 		setSelectedItem(selectedOption);
 		const price =
-			paymentOptions[type].plans?.find((plan) => plan.name === selectedOption)
-				?.price || paymentOptions[type].minAmount;
+			currentOptions.plans?.find((plan) => plan.name === selectedOption)
+				?.price || currentOptions.minAmount;
 		setAmount(price);
 	};
 
@@ -30,12 +31,12 @@ const PaymentModal = ({ type, onClose, onProceed }) => {
 
 	const handleNextPhase = () => {
 		onProceed({ amount, selectedItem });
-        onClose();
+		onClose();
 	};
 
 	return (
 		<Modal open={true} onClose={onClose}>
-			<div className="modal-content bg-white p-8 rounded-xl shadow-lg mx-auto mt-40 max-w-md">
+			<div className="modal-content bg-white p-8 rounded-xl shadow-lg mx-auto mt-40 max-w-lg">
 				<h2 className="text-xl font-bold mb-4">
 					{type.charAt(0).toUpperCase() + type.slice(1)} Payment
 				</h2>
@@ -53,7 +54,7 @@ const PaymentModal = ({ type, onClose, onProceed }) => {
 							className="mb-4"
 						>
 							<MenuItem value="Family A Plan">Select a plan</MenuItem>
-							{paymentOptions[type].plans.map((plan) => (
+							{currentOptions.plans?.map((plan) => (
 								<MenuItem key={plan.name} value={plan.name}>
 									{plan.name} - ${plan.price}
 								</MenuItem>
@@ -68,7 +69,7 @@ const PaymentModal = ({ type, onClose, onProceed }) => {
 						onChange={handleAmountChange}
 						fullWidth
 						className="mb-4"
-						helperText={`Minimum amount: $${paymentOptions[type].minAmount}`}
+						helperText={`Minimum amount: $${currentOptions.minAmount || 0}`}
 					/>
 				)}
 				<Button

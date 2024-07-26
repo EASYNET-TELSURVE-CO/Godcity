@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import SpinningLoader from '../../common/Loader';
 
 const PaymentHistory = () => {
   const [payments, setPayments] = useState([]);
@@ -34,19 +35,18 @@ const PaymentHistory = () => {
     fetchPaymentHistory();
   }, []);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <SpinningLoader/>;
   if (error) return <div className="text-red-500">{error}</div>;
 
   return (
-    <div className='p-8 font-normal'>
-      <h2 className="text-xl font-semibold mb-6">Payment History</h2>
-      <table className="w-full border-collapse border">
+    <div className='py-8 font-normal w-full max-w-lg'>
+      <table className="w-full text-left">
         <thead>
           <tr>
             <th className="border p-2">ID</th>
             <th className="border p-2">Amount</th>
             <th className="border p-2">Date</th>
-            <th className="border p-2">Payment Method</th>
+            <th className="border text-right p-2">Payment Method</th>
           </tr>
         </thead>
         <tbody>
@@ -55,7 +55,7 @@ const PaymentHistory = () => {
               <td className="border p-2">{payment.id}</td>
               <td className="border p-2">{payment.amount}</td>
               <td className="border p-2">{payment.date}</td>
-              <td className="border p-2">{payment.method}</td>
+              <td className="border text-right p-2">{payment.method}</td>
             </tr>
           ))}
         </tbody>
