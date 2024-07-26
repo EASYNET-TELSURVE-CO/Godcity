@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { IconButton } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
 import StarRateIcon from "@mui/icons-material/StarRate";
@@ -9,10 +9,23 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import "aos/dist/aos.css";
 import AOS from "aos";
 import FeaturesComparisonSection from "./payment/FeaturesComparisonSection";
-
-AOS.init();
+import PaymentModal from "./payment/PaymentModal ";
+import ConfirmationModal from "./payment/ConfirmationModal ";
 
 const PaymentSection = () => {
+	const [selectedPaymentType, setSelectedPaymentType] = useState(null);
+	const [showPaymentModal, setShowPaymentModal] = useState(false);
+	const [showConfirmationModal, setShowConfirmationModal] = useState(false);
+
+	useEffect(() => {
+		AOS.init();
+	}, []);
+
+	const handlePaymentClick = (type) => {
+		setSelectedPaymentType(type);
+		setShowPaymentModal(true);
+	};
+
 	return (
 		<section className="py-20 bg-primary flex items-center justify-center space-y-10">
 			<div className="container mx-auto px-4 flex items-center justify-center space-y-10 flex-col">
@@ -32,7 +45,10 @@ const PaymentSection = () => {
 							Your donation helps us support various community projects and
 							outreach programs.
 						</p>
-						<button className="bg-primary text-white p-4 rounded-3xl hover:bg-primary-dark transition">
+						<button
+							onClick={() => handlePaymentClick("donation")}
+							className="bg-primary text-white p-4 rounded-3xl hover:bg-primary-dark transition"
+						>
 							Donate Now
 						</button>
 					</div>
@@ -49,7 +65,10 @@ const PaymentSection = () => {
 							Contribute to the offering basket to support the church's
 							operational expenses and future projects.
 						</p>
-						<button className="bg-primary text-white p-4 rounded-3xl hover:bg-primary-dark transition">
+						<button
+							onClick={() => handlePaymentClick("offering")}
+							className="bg-primary text-white p-4 rounded-3xl hover:bg-primary-dark transition"
+						>
 							Give Your Offering
 						</button>
 					</div>
@@ -66,7 +85,10 @@ const PaymentSection = () => {
 							Become a member of our community to receive exclusive updates,
 							newsletters, and event invitations.
 						</p>
-						<button className="bg-primary text-white p-4 rounded-3xl hover:bg-primary-dark transition">
+						<button
+							onClick={() => handlePaymentClick("membership")}
+							className="bg-primary text-white p-4 rounded-3xl hover:bg-primary-dark transition"
+						>
 							Join Us
 						</button>
 					</div>
@@ -88,7 +110,10 @@ const PaymentSection = () => {
 						</p>
 						<div className="flex flex-col items-center space-y-4">
 							<p className="text-xl font-bold">$5 / month</p>
-							<button className="bg-primary text-white p-4 rounded-3xl hover:bg-primary-dark transition">
+							<button
+								onClick={() => handlePaymentClick("subscription")}
+								className="bg-primary text-white p-4 rounded-3xl hover:bg-primary-dark transition"
+							>
 								Subscribe Now
 							</button>
 						</div>
@@ -108,7 +133,10 @@ const PaymentSection = () => {
 						</p>
 						<div className="flex flex-col items-center space-y-4">
 							<p className="text-xl font-bold">$15 / month</p>
-							<button className="bg-white text-primary p-4 rounded-3xl hover:bg-gray-200 transition">
+							<button
+								onClick={() => handlePaymentClick("subscription")}
+								className="bg-white text-primary p-4 rounded-3xl hover:bg-gray-200 transition"
+							>
 								Subscribe Now
 							</button>
 						</div>
@@ -128,7 +156,10 @@ const PaymentSection = () => {
 						</p>
 						<div className="flex flex-col items-center space-y-4">
 							<p className="text-xl font-bold">$30 / month</p>
-							<button className="bg-primary text-white p-4 rounded-3xl hover:bg-primary-dark transition">
+							<button
+								onClick={() => handlePaymentClick("subscription")}
+								className="bg-primary text-white p-4 rounded-3xl hover:bg-primary-dark transition"
+							>
 								Subscribe Now
 							</button>
 						</div>
@@ -137,6 +168,17 @@ const PaymentSection = () => {
 
 				{/* Features Comparison Section */}
 				<FeaturesComparisonSection />
+				{/* Modals */}
+				{showPaymentModal && (
+					<PaymentModal
+						type={selectedPaymentType}
+						onClose={() => setShowPaymentModal(false)}
+						onProceed={() => setShowConfirmationModal(true)}
+					/>
+				)}
+				{showConfirmationModal && (
+					<ConfirmationModal onClose={() => setShowConfirmationModal(false)} />
+				)}
 			</div>
 		</section>
 	);
