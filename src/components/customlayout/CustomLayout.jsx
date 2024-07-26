@@ -48,7 +48,7 @@ const CustomLayout = ({ children }) => {
 	return (
 		<div className="unauthenticated-layout">
 			<Navbar sectionRefs={sectionRefs} currentSection={currentSection} />
-			<main>{childrenWithProps}</main>
+			<main className="min-h-screen">{childrenWithProps}</main>
 			<Footer />
 			<ScrollToTop />
 		</div>

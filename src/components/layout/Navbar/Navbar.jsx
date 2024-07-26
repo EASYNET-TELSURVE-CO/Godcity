@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { BsFillMenuButtonFill, BsFillMenuButtonWideFill } from "react-icons/bs";
 import { menuItems, userDropdownItems } from "./navbarData";
 import UserSection from "./UserSection";
@@ -49,6 +49,9 @@ const Navbar = ({ sectionRefs, currentSection }) => {
 	const [isUserOpen, setUserOpen] = useState(false);
 	const [navbarOpacity, setNavbarOpacity] = useState(1);
 	const [activeSection, setActiveSection] = useState(currentSection);
+	const location = useLocation();
+	const navigate = useNavigate();
+	const isHomePage = location.pathname === "/";
 
 	const menuRef = useRef(null);
 	const userDropdownRef = useRef(null);
@@ -98,11 +101,17 @@ const Navbar = ({ sectionRefs, currentSection }) => {
 	};
 
 	const handleScrollToSection = (section) => {
-		if (sectionRefs.current[section] && sectionRefs.current[section].current) {
+		if (
+			isHomePage &&
+			sectionRefs.current[section] &&
+			sectionRefs.current[section].current
+		) {
 			sectionRefs.current[section].current.scrollIntoView({
 				behavior: "smooth",
 			});
 			setActiveSection(section);
+		} else {
+			navigate('/');
 		}
 	};
 
@@ -156,7 +165,7 @@ const Navbar = ({ sectionRefs, currentSection }) => {
 								key={item.section}
 								label={item.label}
 								onClick={() => handleScrollToSection(item.section)}
-								isActive={activeSection  === item.section}
+								isActive={activeSection === item.section}
 							/>
 						))}
 					</ul>

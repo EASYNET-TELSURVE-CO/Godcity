@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { Modal, Button, TextField } from "@mui/material";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const ConfirmationModal = ({ onClose }) => {
 	const [paymentMethod, setPaymentMethod] = useState("card");
 	const [cardDetails, setCardDetails] = useState("");
+	const navigate = useNavigate();
 
 	const handlePaymentMethodChange = (event) => {
 		setPaymentMethod(event.target.value);
@@ -19,7 +21,8 @@ const ConfirmationModal = ({ onClose }) => {
 			paymentMethod,
 			cardDetails,
 		});
-		
+
+		navigate("/payment");
 	};
 
 	return (
