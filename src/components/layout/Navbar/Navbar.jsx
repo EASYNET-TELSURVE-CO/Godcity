@@ -1,15 +1,15 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { BsFillMenuButtonFill, BsFillMenuButtonWideFill } from "react-icons/bs";
-import { menuItems, userDropdownItems } from "./navbarData";
+import { menuItems, userDropdownItems, Items } from "./navbarData";
 import UserSection from "./UserSection";
 import { useAuth } from "../../../contexts/AuthContext";
 
-const Menu = ({ label, onClick, isActive, isHomePage }) => {
+const Menu = ({ label, onClick, isActive, isHomePage, to }) => {
 	return (
 		<li>
 			<Link
-				to={isHomePage ? undefined : "/"}
+				to={isHomePage ? undefined : to}
 				onClick={isHomePage ? onClick : undefined}
 				className={`block py-2 md:py-0 px-3 my-1 md:my-0 md:p-0 ${
 					isActive
@@ -159,15 +159,24 @@ const Navbar = ({ sectionRefs, currentSection }) => {
 					ref={menuRef}
 				>
 					<ul className="flex flex-col font-medium p-6 md:p-0 my-4 md:my-0 bg-background dark:bg-background-dark rounded-3xl md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-warm dark:bg-background-dark/85md:dark:bg-background-dark/85 shadow md:shadow-none">
-						{menuItems.map((item) => (
-							<Menu
-								key={item.section}
-								label={item.label}
-								onClick={() => handleScrollToSection(item.section)}
-								isActive={activeSection === item.section}
-								isHomePage={isHomePage}
-							/>
-						))}
+						{isHomePage
+							? menuItems.map((item) => (
+									<Menu
+										key={item.section}
+										label={item.label}
+										onClick={() => handleScrollToSection(item.section)}
+										isActive={activeSection === item.section}
+										isHomePage={isHomePage}
+									/>
+							  ))
+							: Items.map((item) => (
+									<Menu
+										key={item.label}
+										label={item.label}
+										isActive={location.pathname === item.to}
+										to={item.to}
+									/>
+							  ))}
 					</ul>
 				</div>
 			</div>

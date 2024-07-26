@@ -12,4 +12,9 @@ const userDropdownItems = [
 	{ to: "/logout", label: "Logout" },
 ];
 
-export { menuItems, userDropdownItems };
+const Items = [
+	{ label: "Home", to: "/" },
+	{ label: "Make Payment", to: "/payment" },
+]
+
+export { menuItems, userDropdownItems, Items };
