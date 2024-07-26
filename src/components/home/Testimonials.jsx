@@ -62,7 +62,13 @@ const Testimonials = () => {
                                     <p className="text-sm font-light">{testimonial.position}</p>
                                 </div>
                             </div>
-                            <p className="text-base font-light">{testimonial.testimonial}</p>
+                            <p className="text-base font-light"><span className="text-2xl">
+                                &quot;
+                            </span>
+                            {testimonial.testimonial}
+                            <span className="text-2xl">
+                                &quot;
+                            </span></p>
                         </div>
                     ))}
                 </div>
