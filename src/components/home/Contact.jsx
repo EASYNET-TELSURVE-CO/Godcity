@@ -30,24 +30,24 @@ const Contact = () => {
                         <p className="text-base font-light mb-4">
                             Reach out to us using any of the following methods:
                         </p>
-                        <div className="flex items-center mb-4">
+                        <div className="flex items-center mb-4 italic font-light">
                             <EmailIcon className="text-primary dark:text-primary-dark mr-2" />
                             <span>info@godcity.com</span>
                         </div>
-                        <div className="flex items-center mb-4">
+                        <div className="flex items-center mb-4 italic font-light">
                             <PhoneIcon className="text-primary dark:text-primary-dark mr-2" />
                             <span>+123 456 7890</span>
                         </div>
-                        <div className="flex items-center mb-4">
+                        <div className="flex items-center mb-4 italic font-light">
                             <LocationOnIcon className="text-primary dark:text-primary-dark mr-2" />
                             <span>123 GodCity Street, Heaven Town</span>
                         </div>
                     </div>
                     <div className="w-full lg:w-2/3" data-aos="fade-up" data-aos-delay="200">
                         <h3 className="text-xl font-semibold mb-4">Send Us a Message</h3>
-                        <form className="bg-white dark:bg-gray-800 p-6 rounded-3xl shadow-lg">
+                        <form className="bg-white dark:bg-gray-800 p-6 rounded-3xl text-left shadow-lg">
                             <div className="mb-4">
-                                <label className="block text-sm font-semibold mb-2" htmlFor="name">Name</label>
+                                <label className="block text-sm font-normal mb-2" htmlFor="name">Name</label>
                                 <input
                                     type="text"
                                     id="name"
@@ -56,7 +56,7 @@ const Contact = () => {
                                 />
                             </div>
                             <div className="mb-4">
-                                <label className="block text-sm font-semibold mb-2" htmlFor="email">Email</label>
+                                <label className="block text-sm font-normal mb-2" htmlFor="email">Email</label>
                                 <input
                                     type="email"
                                     id="email"
@@ -65,7 +65,7 @@ const Contact = () => {
                                 />
                             </div>
                             <div className="mb-4">
-                                <label className="block text-sm font-semibold mb-2" htmlFor="message">Message</label>
+                                <label className="block text-sm font-normal mb-2" htmlFor="message">Message</label>
                                 <textarea
                                     id="message"
                                     className="w-full p-3 border border-gray-300 dark:border-gray-700 rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary"
