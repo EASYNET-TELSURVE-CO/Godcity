@@ -5,11 +5,12 @@ import { menuItems, userDropdownItems } from "./navbarData";
 import UserSection from "./UserSection";
 import { useAuth } from "../../../contexts/AuthContext";
 
-const Menu = ({ label, onClick, isActive }) => {
+const Menu = ({ label, onClick, isActive, isHomePage }) => {
 	return (
 		<li>
 			<Link
-				onClick={onClick}
+				to={isHomePage ? undefined : "/"}
+				onClick={isHomePage ? onClick : undefined}
 				className={`block py-2 md:py-0 px-3 my-1 md:my-0 md:p-0 ${
 					isActive
 						? "bg-primary text-contrast-dark font-medium rounded-2xl md:bg-transparent md:text-primary"
@@ -110,8 +111,6 @@ const Navbar = ({ sectionRefs, currentSection }) => {
 				behavior: "smooth",
 			});
 			setActiveSection(section);
-		} else {
-			navigate('/');
 		}
 	};
 
@@ -166,6 +165,7 @@ const Navbar = ({ sectionRefs, currentSection }) => {
 								label={item.label}
 								onClick={() => handleScrollToSection(item.section)}
 								isActive={activeSection === item.section}
+								isHomePage={isHomePage}
 							/>
 						))}
 					</ul>
