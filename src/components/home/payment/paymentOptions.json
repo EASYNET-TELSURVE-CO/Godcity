@@ -1,0 +1,28 @@
+{
+    "donation": {
+      "minAmount": 5
+    },
+    "offering": {
+      "minAmount": 10
+    },
+    "membership": {
+      "minAmount": 0
+    },
+    "subscription": {
+      "plans": [
+        {
+          "name": "Family A Plan",
+          "price": 5
+        },
+        {
+          "name": "Premium Plan",
+          "price": 15
+        },
+        {
+          "name": "Enterprise Plan",
+          "price": 30
+        }
+      ]
+    }
+  }
+  
