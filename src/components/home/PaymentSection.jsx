@@ -9,13 +9,11 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import "aos/dist/aos.css";
 import AOS from "aos";
 import FeaturesComparisonSection from "./payment/FeaturesComparisonSection";
-import PaymentModal from "./payment/PaymentModal ";
-import ConfirmationModal from "./payment/ConfirmationModal ";
+import { useNavigate } from "react-router-dom";
 
 const PaymentSection = () => {
 	const [selectedPaymentType, setSelectedPaymentType] = useState(null);
-	const [showPaymentModal, setShowPaymentModal] = useState(false);
-	const [showConfirmationModal, setShowConfirmationModal] = useState(false);
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		AOS.init();
@@ -23,7 +21,7 @@ const PaymentSection = () => {
 
 	const handlePaymentClick = (type) => {
 		setSelectedPaymentType(type);
-		setShowPaymentModal(true);
+		navigate("/payment", { state: { paymentType: type } });
 	};
 
 	return (
@@ -168,17 +166,6 @@ const PaymentSection = () => {
 
 				{/* Features Comparison Section */}
 				<FeaturesComparisonSection />
-				{/* Modals */}
-				{showPaymentModal && (
-					<PaymentModal
-						type={selectedPaymentType}
-						onClose={() => setShowPaymentModal(false)}
-						onProceed={() => setShowConfirmationModal(true)}
-					/>
-				)}
-				{showConfirmationModal && (
-					<ConfirmationModal onClose={() => setShowConfirmationModal(false)} />
-				)}
 			</div>
 		</section>
 	);
