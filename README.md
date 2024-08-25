@@ -63,7 +63,7 @@ Using yarn:
 yarn dev
 ```
 
-The application should now be running on `http://localhost:3000`.
+The application should now be running on `https://dev.d2n7yc3hf9zv5m.amplifyapp.com/`.
 
 ## Project Structure
 ```plaintext
@@ -102,7 +102,7 @@ Godcity/
 
 2. **Open your browser and navigate to:**
    ```
-   http://localhost:3000
+   https://dev.d2n7yc3hf9zv5m.amplifyapp.com/
    ```
 
 ### Building for Production
