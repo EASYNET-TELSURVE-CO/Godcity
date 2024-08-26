@@ -43,7 +43,7 @@ const Footer = () => {
 							rel="noopener noreferrer"
 							className="hover:underline ml-1"
 						>
-							© 2024, Designed by Iyayi Osa Ojogan.
+							Designed by Iyayi Osa Ojogan.
 						</a>
 					</div>
 					<DarkModeToggle />
