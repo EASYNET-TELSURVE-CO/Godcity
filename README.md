@@ -63,7 +63,7 @@ Using yarn:
 yarn dev
 ```
 
-The application should now be running on `https://dev.d2n7yc3hf9zv5m.amplifyapp.com/`.
+The application should now be running on `http://godcity-dashboard.s3-website-eu-west-1.amazonaws.com/#/auth/signin/`.
 
 ## Project Structure
 ```plaintext
@@ -102,7 +102,7 @@ Godcity/
 
 2. **Open your browser and navigate to:**
    ```
-   https://dev.d2n7yc3hf9zv5m.amplifyapp.com/
+   http://godcity-dashboard.s3-website-eu-west-1.amazonaws.com/#/auth/signin/
    ```
 
 ### Building for Production
