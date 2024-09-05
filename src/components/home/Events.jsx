@@ -24,7 +24,7 @@ const Events = () => {
         AOS.init({ duration: 1000 });
         
         // Fetch events from the API
-        axios.get('http://52.87.197.214:5000/api/events')
+        axios.get('https://godcity-be.onrender.com/api/events')
             .then(response => {
                 const eventsData = response.data.map(event => ({
                     id: event._id,

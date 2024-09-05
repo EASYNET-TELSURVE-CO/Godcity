@@ -13,7 +13,7 @@ const Sermon = () => {
         // Fetch the sermons from the API
         const fetchSermons = async () => {
             try {
-                const response = await fetch('http://52.87.197.214:5000/api/resources/all');
+                const response = await fetch('https://godcity-be.onrender.com/api/resources/all');
                 const data = await response.json();
                 if (data.responseCode === 200) {
                     setSermons(data.data);
