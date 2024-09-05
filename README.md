@@ -63,7 +63,7 @@ Using yarn:
 yarn dev
 ```
 
-The application should now be running on `http://localhost:3000`.
+The application should now be running on `http://godcity-dashboard.s3-website-eu-west-1.amazonaws.com/#/auth/signin/`.
 
 ## Project Structure
 ```plaintext
@@ -102,7 +102,7 @@ Godcity/
 
 2. **Open your browser and navigate to:**
    ```
-   http://localhost:3000
+   http://godcity-dashboard.s3-website-eu-west-1.amazonaws.com/#/auth/signin/
    ```
 
 ### Building for Production

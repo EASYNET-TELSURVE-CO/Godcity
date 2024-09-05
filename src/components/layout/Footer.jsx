@@ -43,7 +43,7 @@ const Footer = () => {
 							rel="noopener noreferrer"
 							className="hover:underline ml-1"
 						>
-							Designed by Easynet.
+							Designed by Iyayi Osa Ojogan.
 						</a>
 					</div>
 					<DarkModeToggle />
