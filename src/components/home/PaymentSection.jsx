@@ -95,7 +95,7 @@ const PaymentSection = () => {
 				{/* Subscription Plans Section */}
 				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10 font-light">
 					{/* Family A Plan */}
-					<div
+					{/* <div
 						className="bg-white/70 dark:bg-gray-800/50 p-10 rounded-3xl shadow-lg flex flex-col items-center space-y-6 relative transition-transform transform hover:scale-105 hover:bg-gray-100 dark:hover:bg-gray-600"
 						data-aos="fade-up"
 						data-aos-delay="400"
@@ -115,10 +115,10 @@ const PaymentSection = () => {
 								Subscribe Now
 							</button>
 						</div>
-					</div>
+					</div> */}
 
 					{/* Premium Plan */}
-					<div
+					{/* <div
 						className="bg-primary text-white p-10 rounded-3xl shadow-lg flex flex-col items-center space-y-6 relative transition-transform transform hover:scale-105 hover:bg-primary-dark"
 						data-aos="fade-up"
 						data-aos-delay="500"
@@ -138,10 +138,10 @@ const PaymentSection = () => {
 								Subscribe Now
 							</button>
 						</div>
-					</div>
+					</div> */}
 
 					{/* Enterprise Plan */}
-					<div
+					{/* <div
 						className="bg-white/70 dark:bg-gray-800/50 p-10 rounded-3xl shadow-lg flex flex-col items-center space-y-6 relative transition-transform transform hover:scale-105 hover:bg-gray-100 dark:hover:bg-gray-600"
 						data-aos="fade-up"
 						data-aos-delay="600"
@@ -161,11 +161,11 @@ const PaymentSection = () => {
 								Subscribe Now
 							</button>
 						</div>
-					</div>
+					</div> */}
 				</div>
 
 				{/* Features Comparison Section */}
-				<FeaturesComparisonSection />
+				{/* <FeaturesComparisonSection /> */}
 			</div>
 		</section>
 	);

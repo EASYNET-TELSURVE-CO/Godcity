@@ -10,8 +10,9 @@ import {
 import paymentOptions from "./paymentOptions.json";
 
 const PaymentModal = ({ type = "default", onClose, onProceed }) => {
-	const [selectedItem, setSelectedItem] = useState("Family A Plan");
+	const [selectedItem, setSelectedItem] = useState("");
 	const [amount, setAmount] = useState("");
+	const [error, setError] = useState("");
 
 	// Validate paymentOptions[type]
 	const currentOptions = paymentOptions[type] || {};
@@ -19,18 +20,49 @@ const PaymentModal = ({ type = "default", onClose, onProceed }) => {
 	const handleItemChange = (event) => {
 		const selectedOption = event.target.value;
 		setSelectedItem(selectedOption);
+
+		// Get the price of the selected plan or default to the minimum amount
 		const price =
 			currentOptions.plans?.find((plan) => plan.name === selectedOption)
-				?.price || currentOptions.minAmount;
+				?.price || currentOptions.minAmount || 1; // Minimum fallback to 1
+
 		setAmount(price);
+		setError(""); // Clear any previous error
 	};
 
 	const handleAmountChange = (event) => {
-		setAmount(event.target.value);
+		const inputValue = event.target.value;
+
+		// Prevent negative values and ensure valid number
+		if (inputValue < 0) {
+			setError("Amount must be greater than 0.");
+			return;
+		}
+
+		// Check minimum value
+		const minAmount = currentOptions.minAmount || 1; // Minimum fallback to 1
+		if (inputValue < minAmount) {
+			setError(`Amount must be at least $${minAmount}.`);
+		} else {
+			setError("");
+		}
+
+		setAmount(inputValue);
 	};
 
 	const handleNextPhase = () => {
-		onProceed({ amount, selectedItem });
+		const minAmount = currentOptions.minAmount || 1; // Minimum fallback to 1
+
+		// Validate amount before proceeding
+		if (amount <= 0 || amount < minAmount) {
+			setError(
+				`Amount must be greater than 0 and at least $${minAmount}.`
+			);
+			return;
+		}
+
+		// Proceed if no errors
+		onProceed({ amount: parseFloat(amount), selectedItem });
 		onClose();
 	};
 
@@ -53,7 +85,7 @@ const PaymentModal = ({ type = "default", onClose, onProceed }) => {
 							fullWidth
 							className="mb-4"
 						>
-							<MenuItem value="Family A Plan">Select a plan</MenuItem>
+							<MenuItem value="">Select a plan</MenuItem>
 							{currentOptions.plans?.map((plan) => (
 								<MenuItem key={plan.name} value={plan.name}>
 									{plan.name} - ${plan.price}
@@ -69,8 +101,12 @@ const PaymentModal = ({ type = "default", onClose, onProceed }) => {
 						onChange={handleAmountChange}
 						fullWidth
 						className="mb-4"
-						helperText={`Minimum amount: $${currentOptions.minAmount || 0}`}
+						helperText={`Minimum amount: $${currentOptions.minAmount || 1}`}
+						error={Boolean(error)}
 					/>
+				)}
+				{error && (
+					<p className="text-red-600 text-sm mb-2">{error}</p>
 				)}
 				<Button
 					variant="contained"
@@ -83,6 +119,7 @@ const PaymentModal = ({ type = "default", onClose, onProceed }) => {
 						backgroundColor: "#c0a700",
 						borderRadius: 2,
 					}}
+					disabled={!amount || error}
 				>
 					Next
 				</Button>

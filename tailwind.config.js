@@ -1,6 +1,4 @@
-// tailwind.config.js
-
-module.exports = {
+export default {
 	darkMode: "class", // or 'media' if you prefer
 	content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
 	theme: {
@@ -26,13 +24,11 @@ module.exports = {
 					DEFAULT: "#1f2937", // Gray 800
 					dark: "#f3f4f6", // Gray 100
 				},
-				// Add other colors as needed
 			},
-			backgroundImage: theme => ({
-				'hero': "url('/hero.jpg')",
-				'hero_dark': "url('/hero_dark.jpg')",
-				// Add other background images as needed
-			  }),
+			backgroundImage: (theme) => ({
+				hero: "url('/hero.jpg')",
+				hero_dark: "url('/hero_dark.jpg')",
+			}),
 		},
 	},
 	plugins: [],

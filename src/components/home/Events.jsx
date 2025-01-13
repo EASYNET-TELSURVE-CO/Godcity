@@ -73,13 +73,13 @@ const Events = () => {
                     <p className="text-lg sm:text-xl md:text-2xl">
                         Stay updated with our latest events and activities.
                     </p>
-                    <button
+                    {/* <button
                         className="mt-4 px-6 py-4 bg-primary text-white rounded-full shadow-lg hover:bg-primary-dark transition transform hover:scale-105"
                         data-aos="fade-up"
                         data-aos-delay="100"
                     >
                         <AddIcon /> Add New Event
-                    </button>
+                    </button> */}
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                     {events.map((event) => (

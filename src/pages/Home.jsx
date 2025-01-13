@@ -111,12 +111,12 @@ const Home = ({ sectionRefs, setCurrentSection }) => {
 			<section id="cta" ref={sectionRefs.current.cta}>
 				<Cta />
 			</section>
-			<section id="sermon" ref={sectionRefs.current.sermon}>
+			{/* <section id="sermon" ref={sectionRefs.current.sermon}>
 				<Sermon />
-			</section>
-			<section id="banner" ref={sectionRefs.current.banner}>
+			</section> */}
+			{/* <section id="banner" ref={sectionRefs.current.banner}>
 				<Banner />
-			</section>
+			</section> */}
 			<section id="aboutUs" ref={sectionRefs.current.aboutUs}>
 				<AboutUs />
 			</section>
